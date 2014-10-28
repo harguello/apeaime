@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2014 10:06:01 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="Usuario" table="usuario" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="latitud" type="string">
+            <column name="latitud" length="45" />
+        </property>
+        <property name="longitud" type="string">
+            <column name="longitud" length="45" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="29" />
+        </property>
+        <property name="foto" type="binary">
+            <column name="foto" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" />
+        </property>
+        <property name="habilitado" type="java.lang.Integer">
+            <column name="habilitado" />
+        </property>
+        <property name="facebook" type="java.lang.Long">
+            <column name="facebook" />
+        </property>
+        <set name="comentarioSitios" table="comentario_sitio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="ComentarioSitio" />
+        </set>
+        <set name="calificacionRutaTuristicas" table="calificacion_ruta_turistica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="CalificacionRutaTuristica" />
+        </set>
+        <set name="eventos" table="evento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="Evento" />
+        </set>
+        <set name="calificacionSitios" table="calificacion_sitio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="CalificacionSitio" />
+        </set>
+        <set name="sitios" table="sitio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="Sitio" />
+        </set>
+        <set name="auditorias" table="auditoria" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="Auditoria" />
+        </set>
+        <set name="rutaTuristicas" table="ruta_turistica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="RutaTuristica" />
+        </set>
+        <set name="comentarioRutaTuristicas" table="comentario_ruta_turistica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="ComentarioRutaTuristica" />
+        </set>
+        <set name="checkins" table="checkin" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="Checkin" />
+        </set>
+        <set name="rolUsuarioUsuarios" table="rol_usuario_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="RolUsuarioUsuario" />
+        </set>
+    </class>
+</hibernate-mapping>

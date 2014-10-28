@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2014 10:06:01 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="RolUsuarioUsuario" table="rol_usuario_usuario" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rolUsuario" class="RolUsuario" fetch="select">
+            <column name="rol_usuario_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Usuario" fetch="select">
+            <column name="usuario_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

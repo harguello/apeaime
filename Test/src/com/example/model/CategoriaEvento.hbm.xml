@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2014 10:06:01 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="CategoriaEvento" table="categoria_evento" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="categoriaEvento" type="string">
+            <column name="categoria_evento" length="100" />
+        </property>
+        <set name="eventoCategoriaEventos" table="evento_categoria_evento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="categoria_evento_id" not-null="true" />
+            </key>
+            <one-to-many class="EventoCategoriaEvento" />
+        </set>
+    </class>
+</hibernate-mapping>

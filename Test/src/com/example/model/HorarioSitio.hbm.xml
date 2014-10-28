@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2014 10:06:01 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="HorarioSitio" table="horario_sitio" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="dia" class="Dia" fetch="select">
+            <column name="dia_id" not-null="true" />
+        </many-to-one>
+        <property name="horarioApertura" type="time">
+            <column name="horario_apertura" length="15" />
+        </property>
+        <property name="horarioCierre" type="time">
+            <column name="horario_cierre" length="15" />
+        </property>
+    </class>
+</hibernate-mapping>

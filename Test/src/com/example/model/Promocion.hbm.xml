@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2014 10:06:01 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="Promocion" table="promocion" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sitio" class="Sitio" fetch="select">
+            <column name="sitio_id" not-null="true" />
+        </many-to-one>
+        <property name="validez" type="timestamp">
+            <column name="validez" length="29" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="1000" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="promocion_id" />
+            </key>
+            <one-to-many class="Foto" />
+        </set>
+    </class>
+</hibernate-mapping>

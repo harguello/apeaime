@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2014 10:06:01 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="RutaTuristica" table="ruta_turistica" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="Usuario" fetch="select">
+            <column name="usuario_id" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="1000" />
+        </property>
+        <property name="habilitado" type="java.lang.Integer">
+            <column name="habilitado" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="29" />
+        </property>
+        <set name="comentarioRutaTuristicas" table="comentario_ruta_turistica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ruta_turistica_id" not-null="true" />
+            </key>
+            <one-to-many class="ComentarioRutaTuristica" />
+        </set>
+        <set name="sitioRutaTuristicas" table="sitio_ruta_turistica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ruta_turistica_id" not-null="true" />
+            </key>
+            <one-to-many class="SitioRutaTuristica" />
+        </set>
+        <set name="calificacionRutaTuristicas" table="calificacion_ruta_turistica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ruta_turistica_id" not-null="true" />
+            </key>
+            <one-to-many class="CalificacionRutaTuristica" />
+        </set>
+        <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ruta_turistica_id" />
+            </key>
+            <one-to-many class="Foto" />
+        </set>
+    </class>
+</hibernate-mapping>
